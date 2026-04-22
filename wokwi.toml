@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = '.pio/build/wemos_d1_mini32/firmware.elf'
+gdbServerPort = 3333

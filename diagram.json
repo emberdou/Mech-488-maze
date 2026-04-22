@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "author": "Mech-488-maze",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp32",     "top": 200,  "left": 0,    "attrs": {} },
+
+    { "type": "wokwi-ssd1306",         "id": "oled",      "top": 0,    "left": -220, "attrs": { "i2cAddress": "0x3c" } },
+
+    { "type": "wokwi-pushbutton", "id": "btn_up",    "top": -60,  "left": 280,  "attrs": { "color": "white" } },
+    { "type": "wokwi-pushbutton", "id": "btn_down",  "top": 60,   "left": 280,  "attrs": { "color": "white" } },
+    { "type": "wokwi-pushbutton", "id": "btn_left",  "top": 0,    "left": 200,  "attrs": { "color": "white" } },
+    { "type": "wokwi-pushbutton", "id": "btn_right", "top": 0,    "left": 360,  "attrs": { "color": "white" } },
+
+    { "type": "wokwi-servo",           "id": "servo",     "top": 220,  "left": 320,  "attrs": {} },
+
+    { "type": "wokwi-buzzer",          "id": "buzzer",    "top": 380,  "left": 320,  "attrs": { "volume": "0.5" } },
+
+    { "type": "wokwi-neopixel",        "id": "neo0",      "top": 500,  "left": 0,    "attrs": {} },
+    { "type": "wokwi-neopixel",        "id": "neo1",      "top": 500,  "left": 48,   "attrs": {} },
+    { "type": "wokwi-neopixel",        "id": "neo2",      "top": 500,  "left": 96,   "attrs": {} },
+    { "type": "wokwi-neopixel",        "id": "neo3",      "top": 500,  "left": 144,  "attrs": {} },
+    { "type": "wokwi-neopixel",        "id": "neo4",      "top": 500,  "left": 192,  "attrs": {} },
+    { "type": "wokwi-neopixel",        "id": "neo5",      "top": 500,  "left": 240,  "attrs": {} },
+    { "type": "wokwi-neopixel",        "id": "neo6",      "top": 500,  "left": 288,  "attrs": {} },
+    { "type": "wokwi-neopixel",        "id": "neo7",      "top": 500,  "left": 336,  "attrs": {} },
+
+    { "type": "wokwi-pushbutton",      "id": "btn_easy",  "top": 0,    "left": -380, "attrs": { "color": "green"  } },
+    { "type": "wokwi-pushbutton",      "id": "btn_med",   "top": 80,   "left": -380, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-pushbutton",      "id": "btn_hard",  "top": 160,  "left": -380, "attrs": { "color": "red"    } },
+
+    { "type": "wokwi-led",             "id": "vibro_led", "top": 380,  "left": -150, "attrs": { "color": "blue"   } },
+    { "type": "wokwi-resistor",        "id": "r1",        "top": 420,  "left": -150, "attrs": { "value": "100"    } }
+  ],
+  "connections": [
+    ["esp32:3V3",  "oled:VCC", "red",   []],
+    ["esp32:GND.1","oled:GND", "black", []],
+    ["esp32:D21",  "oled:SDA", "green", []],
+    ["esp32:D22",  "oled:SCL", "blue",  []],
+
+    ["esp32:D12",  "btn_up:1.l",    "white", []],
+    ["esp32:GND.1","btn_up:2.l",    "black", []],
+    ["esp32:D13",  "btn_down:1.l",  "white", []],
+    ["esp32:GND.1","btn_down:2.l",  "black", []],
+    ["esp32:D19",  "btn_left:1.l",  "white", []],
+    ["esp32:GND.1","btn_left:2.l",  "black", []],
+    ["esp32:D23",  "btn_right:1.l", "white", []],
+    ["esp32:GND.1","btn_right:2.l", "black", []],
+
+    ["esp32:3V3",  "servo:V+",  "red",    []],
+    ["esp32:GND.1","servo:GND", "black",  []],
+    ["esp32:D27",  "servo:PWM", "orange", []],
+
+    ["esp32:D33",  "buzzer:1",  "orange", []],
+    ["esp32:GND.1","buzzer:2",  "black",  []],
+
+    ["esp32:D25",  "neo0:DIN",  "green",  []],
+    ["neo0:DOUT",  "neo1:DIN",  "green",  []],
+    ["neo1:DOUT",  "neo2:DIN",  "green",  []],
+    ["neo2:DOUT",  "neo3:DIN",  "green",  []],
+    ["neo3:DOUT",  "neo4:DIN",  "green",  []],
+    ["neo4:DOUT",  "neo5:DIN",  "green",  []],
+    ["neo5:DOUT",  "neo6:DIN",  "green",  []],
+    ["neo6:DOUT",  "neo7:DIN",  "green",  []],
+
+    ["esp32:3V3",  "neo0:VCC",  "red",    []],
+    ["neo0:VCC",   "neo1:VCC",  "red",    []],
+    ["neo1:VCC",   "neo2:VCC",  "red",    []],
+    ["neo2:VCC",   "neo3:VCC",  "red",    []],
+    ["neo3:VCC",   "neo4:VCC",  "red",    []],
+    ["neo4:VCC",   "neo5:VCC",  "red",    []],
+    ["neo5:VCC",   "neo6:VCC",  "red",    []],
+    ["neo6:VCC",   "neo7:VCC",  "red",    []],
+
+    ["esp32:GND.1","neo0:GND",  "black",  []],
+    ["neo0:GND",   "neo1:GND",  "black",  []],
+    ["neo1:GND",   "neo2:GND",  "black",  []],
+    ["neo2:GND",   "neo3:GND",  "black",  []],
+    ["neo3:GND",   "neo4:GND",  "black",  []],
+    ["neo4:GND",   "neo5:GND",  "black",  []],
+    ["neo5:GND",   "neo6:GND",  "black",  []],
+    ["neo6:GND",   "neo7:GND",  "black",  []],
+
+    ["esp32:D32",  "btn_easy:1.l", "green",  []],
+    ["esp32:GND.2","btn_easy:2.l", "black",  []],
+    ["esp32:D4",   "btn_med:1.l",  "yellow", []],
+    ["esp32:GND.2","btn_med:2.l",  "black",  []],
+    ["esp32:D18",  "btn_hard:1.l", "red",    []],
+    ["esp32:GND.2","btn_hard:2.l", "black",  []],
+
+    ["esp32:D26",  "r1:1",         "blue",   []],
+    ["r1:2",       "vibro_led:A",  "blue",   []],
+    ["esp32:GND.1","vibro_led:K",  "black",  []]
+  ]
+}
